@@ -1,7 +1,8 @@
 var port = process.env.PORT || 3000,
     http = require('http'),
     fs = require('fs'),
-    html = fs.readFileSync('index.html');
+    html = fs.readFileSync('index.html', 'utf8'),
+    ghex = require('./ghex');
 
 var log = function(entry) {
     fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
@@ -26,9 +27,14 @@ var server = http.createServer(function (req, res) {
             res.end();
         });
     } else {
-        res.writeHead(200);
-        res.write(html);
-        res.end();
+        log(req);
+
+		ghex.getRepos().then((content) => {
+			res.writeHead(200);
+		    res.write(html.replace("{{ content }}", content));
+			res.end();
+		});
+
     }
 });
 

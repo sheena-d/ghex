@@ -19,12 +19,14 @@ To fill in the gaps in my personal knowledge, I primarily consulted the followin
 
 - Utilize a real front-end templating framework
 - Add the ability to look up any user's public repositories
+- Better structure the code for extensibility and reuse
 
 ## Setup
 - Install Node and NPM
 - Clone the repository
 - Run `npm install` in the project root
 - Set an environment variable for `github_token` ([more info](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line))
+- Run `npm start` in the project root
 - Visit 127.0.0.1:3000 and see the list of your repositories. 
 
 ## Demo
